@@ -1,0 +1,49 @@
+{% extends 'base_credential.html' %} 
+
+{% block title %}Login{% endblock title %}
+
+{% block signupform %}
+
+<div class="card bg-light p-5">
+
+  {% for msg in messages %}
+      
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{msg}}</strong> 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+
+      {% endfor %}
+
+
+  <form action="/credential/login/" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        name="pass1"
+        class="form-control"
+        id="exampleInputPassword1"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+     <br>
+    new user? <a href="/credential/signup/">Signup</a>
+  </form>
+</div>
+
+{% endblock signupform %}
